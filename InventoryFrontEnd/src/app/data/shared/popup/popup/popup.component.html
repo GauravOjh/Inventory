@@ -1,0 +1,21 @@
+<form [formGroup]="formGroup" (ngSubmit)="Update()">
+    <h1 mat-dialog-title>{{inputData.title}}</h1>
+    <div mat-dialog-content>
+    <mat-form-field hintLabel="Max 20 characters" class="space-form">
+            <mat-label>Product name</mat-label>
+            <input type="text" matInput #input maxlength="20" formControlName="productname" placeholder="Potato"  required/>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 5 characters" class="space-form">
+            <mat-label>Available quantity</mat-label>
+            <input type="text" matInput #input maxlength="5" formControlName="AvailableQuantity" placeholder="1 or 3"  required/>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 5 characters" class="space-form">
+            <mat-label>Re-Order Amount</mat-label>
+            <input type="text" matInput #input maxlength="5" formControlName="ReOrderAmount" placeholder="2000"required/>
+    </mat-form-field>   
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="accent">Update</button>
+    <button mat-raised-button (click)="Close()" color="warn">Close</button>
+</div>
+</form>

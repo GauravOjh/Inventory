@@ -1,0 +1,18 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.margin-between{
+    width: 130px;
+    height: 30px;
+}
+
+.search-between{
+    position: relative;
+    top: 6px;
+}
+
+.top-header {
+    background-color: var(--dark-blue);
+    color: var(--whiteColor);
+}

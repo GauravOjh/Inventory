@@ -1,0 +1,34 @@
+.themeButton.primaryButton {
+    background-color: var(--light-blue) !important;
+    border-color: var(--light-blue) !important;
+    color: var(--whiteColor) !important;
+    cursor: pointer;
+}
+
+.space-form{
+    margin-right: 10px  !important;
+}
+
+.form-alignment{
+    margin: 69px 272px auto;
+}
+table {
+  width: 60%;
+  
+}
+
+th.mat-sort-header-sorted {
+  color: white;
+}
+
+mat-card{
+    margin:2%;
+}
+
+button{
+    margin:2px;
+}
+
+.heightsearch{
+    height: 61px;
+}
