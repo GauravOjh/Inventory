@@ -1,0 +1,82 @@
+<div >
+    <div >
+        <form id="addition-form" [formGroup]="formGroup"(ngSubmit)="onSubmit()">
+            <div class="addition-form-body-content form-alignment">
+                <mat-form-field hintLabel="Max 3 characters" class="space-form">
+                  <mat-label>Product Id</mat-label>
+                  <input type="text" matInput #input maxlength="3" formControlName="productid" placeholder="34" (input)="onInput($event)" required/>
+                </mat-form-field>
+                <mat-form-field hintLabel="Max 20 characters" class="space-form">
+                  <mat-label>Product name</mat-label>
+                  <input type="text" matInput #input maxlength="20" formControlName="productname" placeholder="Potato" (input)="onInput($event)" required/>
+                </mat-form-field>
+                <mat-form-field hintLabel="Max 5 characters" class="space-form">
+                  <mat-label>Available quantity</mat-label>
+                  <input type="text" matInput #input maxlength="5" formControlName="AvailableQuantity" placeholder="1 or 3" (input)="onInput($event)" required/>
+                </mat-form-field>
+                <mat-form-field hintLabel="Max 5 characters" class="space-form">
+                  <mat-label>Re-Order Amount</mat-label>
+                  <input type="text" matInput #input maxlength="5" formControlName="ReOrderAmount" placeholder="2000" (input)="onInput($event)" required/>
+                </mat-form-field>
+                <div>
+                    <button type="submit" mat-button class="themeButton primaryButton" [disabled]="!formGroup.valid">
+                        Add Values
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mat-elevation-z8">
+     <mat-card>
+        <mat-card-header>
+            <mat-form-field class="heightsearch">
+                <input matInput (keyup)="filterCheck($event)" placeholder="Search your Item"/>
+            </mat-form-field>
+        </mat-card-header>
+        <mat-card-content>  
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="productid">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Product id</th>
+      <td mat-cell *matCellDef="let element"> {{element.productid}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="productname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Product name </th>
+      <td mat-cell *matCellDef="let element"> {{element.productname}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="availablequantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Available Quantity </th>
+      <td mat-cell *matCellDef="let element"> {{element.availableQuantity}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="reorderamount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ReOrder Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.reOrderAmount}} </td>
+    </ng-container>
+
+         <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-raised-button (click)="EditCustomer(element.productid)" color="Primary">Edit</button>
+                <button mat-raised-button color="Warn">Delete</button>
+            </td>
+        </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+         <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+        </mat-paginator>
+        </mat-card-content>
+        <mat-card-footer></mat-card-footer>
+     </mat-card> 
+    </div>
+</div>
