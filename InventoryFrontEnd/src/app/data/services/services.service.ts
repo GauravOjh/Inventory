@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddInventoryItem, InventoryItemModel } from '../schema/inventory-add-request-model';
 import { Observable } from 'rxjs';
@@ -25,8 +25,11 @@ export class ServicesService {
   }
 
   UpdateByProductId(productId:any,body: UpdateInventoryItemModel):Observable<any>{
-    return this.http.put<any>('https://localhost:7135/api/Inventory/inventorydataupdate/'+productId,body, {
-    headers: { 'Content-Type': 'application/json' }
-  });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<any>('https://localhost:7135/api/Inventory/inventorydataupdate/'+productId,body, { headers });
+  }
+
+  deleteByProductId(productId:any){
+    return this.http.delete<any>('https://localhost:7135/api/Inventory/deleteinventorydata/'+productId);
   }
 }
