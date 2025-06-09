@@ -133,4 +133,13 @@ export class InventoryComponent implements OnInit,AfterViewInit {
   EditCustomer(id:any){
     this.OpenPop(id,'Edit Users');
   }
+
+  DeleteCustomer(id:any){
+    this.service.deleteByProductId(id).subscribe(response=>{
+      if(response.success){
+        this.dataSource.data = this.dataSource.data.filter(item => item.productid !== id);
+        alert('data removed successfully');
+      }
+    })
+  }
 }

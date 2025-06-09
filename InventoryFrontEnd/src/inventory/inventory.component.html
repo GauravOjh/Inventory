@@ -64,7 +64,7 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
             <td mat-cell *matCellDef="let element"> 
                 <button mat-raised-button (click)="EditCustomer(element.productid)" color="Primary">Edit</button>
-                <button mat-raised-button color="Warn">Delete</button>
+                <button mat-raised-button color="Warn" (click)="DeleteCustomer(element.productid)">Delete</button>
             </td>
         </ng-container>
 

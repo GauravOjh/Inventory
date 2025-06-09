@@ -42,9 +42,20 @@ constructor(@Inject(MAT_DIALOG_DATA) public data:any,private ref:MatDialogRef<Po
     });
   }
   Update(){
-    this.service.UpdateByProductId(this.inputData.id,this.UpdateItem).subscribe(response=>{
+    const updateData = this.formGroup.value;
+    if(updateData.invalid){
+      alert('Fill Values');
+      return;
+    }
+    this.service.UpdateByProductId(this.inputData.id,updateData).subscribe(response=>{
       if(response.success){
-        this.formGroup.setValue({productname:this.editData.productname,AvailableQuantity:this.editData.availableQuantity,ReOrderAmount:this.editData.reOrderAmount})
+        this.ref.close();
+        this.formGroup.reset({
+                productid:null,
+                productname : '',
+                AvailableQuantity : null,
+                ReOrderAmount:null
+        });
         alert('Data Updated Successfully');
       }
     });
